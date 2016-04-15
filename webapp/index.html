@@ -19,10 +19,10 @@
 	<script>
 		sap.ui.getCore().attachInit(function () {
 			sap.ui.require([
-				"sap/ui/demo/worklist/localService/mockserver",
 				"sap/m/Shell",
-				"sap/ui/core/ComponentContainer"
-			], function (server, Shell, ComponentContainer) {
+				"sap/ui/core/ComponentContainer",
+				"sap/ui/demo/worklist/localService/mockserver"
+			], function (Shell, ComponentContainer, server) {
 				// set up test service for local testing
 				// TODO: remove this when switching to a real service
 				server.init();
