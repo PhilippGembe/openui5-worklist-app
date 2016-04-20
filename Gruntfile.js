@@ -1,13 +1,25 @@
+module.exports = function(grunt) {
 'use strict';
 
-module.exports = function(grunt) {
-
 	grunt.initConfig({
+
+		pkg: grunt.file.readJSON('package.json'),
 
 		dir: {
 			webapp: 'webapp',
 			dist: 'dist',
 			bower_components: 'bower_components'
+		},
+
+		uglify: {
+      options: {
+        banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+      },
+		  ComponentPreload: {
+				files: {
+				'dist/Component-preload.js': ['dist/Component-preload.js']
+				}
+			}
 		},
 
 		connect: {
@@ -80,6 +92,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-openui5');
 	grunt.loadNpmTasks('grunt-eslint');
 
@@ -94,11 +107,15 @@ module.exports = function(grunt) {
 	// Build task
 	grunt.registerTask('build', ['openui5_preload', 'copy']);
 
+	// Minify task
+	grunt.registerTask('minify', ['uglify']);
+
 	// Default task
 	grunt.registerTask('default', [
 		'lint',
 		'clean',
 		'build',
+		//'minify:ComponentPreload',
 		'serve:dist'
 	]);
 };

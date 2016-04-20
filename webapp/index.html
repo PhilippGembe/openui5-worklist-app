@@ -20,12 +20,9 @@
 		sap.ui.getCore().attachInit(function () {
 			sap.ui.require([
 				"sap/m/Shell",
-				"sap/ui/core/ComponentContainer",
-				"sap/ui/demo/worklist/localService/mockserver"
-			], function (Shell, ComponentContainer, server) {
-				// set up test service for local testing
-				// TODO: remove this when switching to a real service
-				server.init();
+				"sap/ui/core/ComponentContainer"
+			], function (Shell, ComponentContainer) {
+
 				// initialize the UI component
 				new Shell({
 					app: new ComponentContainer({
@@ -41,5 +38,6 @@
 
 <!-- UI Content -->
 <body class="sapUiBody" id="content">
+	<h1>Test in SRC</h1>
 </body>
 </html>

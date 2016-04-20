@@ -15,7 +15,7 @@
 				width="auto"
 				class="sapUiResponsiveMargin"
 				items="{
-					path: '/Objects',
+					path: '/Order',
 					sorter: {
 						path: 'Name',
 						descending: false

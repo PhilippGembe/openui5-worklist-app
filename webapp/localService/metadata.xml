@@ -1,8 +1,8 @@
 
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
   <edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="1.0">
     <Schema Namespace="NorthwindModel" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+<!--
       <EntityType Name="Category">
         <Key>
           <PropertyRef Name="CategoryID" />
@@ -79,6 +79,7 @@
         <NavigationProperty Name="Order" Relationship="NorthwindModel.FK_Order_Details_Orders" FromRole="Order_Details" ToRole="Orders" />
         <NavigationProperty Name="Product" Relationship="NorthwindModel.FK_Order_Details_Products" FromRole="Order_Details" ToRole="Products" />
       </EntityType>
+-->
       <EntityType Name="Order">
         <Key>
           <PropertyRef Name="OrderID" />
@@ -102,6 +103,7 @@
         <NavigationProperty Name="Order_Details" Relationship="NorthwindModel.FK_Order_Details_Orders" FromRole="Orders" ToRole="Order_Details" />
         <NavigationProperty Name="Shipper" Relationship="NorthwindModel.FK_Orders_Shippers" FromRole="Orders" ToRole="Shippers" />
       </EntityType>
+<!--
       <EntityType Name="Product">
         <Key>
           <PropertyRef Name="ProductID" />
@@ -479,15 +481,19 @@
         <End Role="Employees" Type="NorthwindModel.Employee" Multiplicity="*" />
         <End Role="Territories" Type="NorthwindModel.Territory" Multiplicity="*" />
       </Association>
+-->
     </Schema>
     <Schema Namespace="ODataWeb.Northwind.Model" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
       <EntityContainer Name="NorthwindEntities" p7:LazyLoadingEnabled="true" m:IsDefaultEntityContainer="true" xmlns:p7="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+<!--
         <EntitySet Name="Categories" EntityType="NorthwindModel.Category" />
         <EntitySet Name="CustomerDemographics" EntityType="NorthwindModel.CustomerDemographic" />
         <EntitySet Name="Customers" EntityType="NorthwindModel.Customer" />
         <EntitySet Name="Employees" EntityType="NorthwindModel.Employee" />
         <EntitySet Name="Order_Details" EntityType="NorthwindModel.Order_Detail" />
+-->
         <EntitySet Name="Orders" EntityType="NorthwindModel.Order" />
+<!--
         <EntitySet Name="Products" EntityType="NorthwindModel.Product" />
         <EntitySet Name="Regions" EntityType="NorthwindModel.Region" />
         <EntitySet Name="Shippers" EntityType="NorthwindModel.Shipper" />
@@ -552,6 +558,7 @@
           <End Role="Employees" EntitySet="Employees" />
           <End Role="Territories" EntitySet="Territories" />
         </AssociationSet>
+-->
       </EntityContainer>
     </Schema>
   </edmx:DataServices>
