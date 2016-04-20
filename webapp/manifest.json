@@ -93,17 +93,17 @@
 
 			"routes": [
 				{
-					"pattern": ""
+					"pattern": "null"
 				},
 				{
-					"pattern": "List",
+					"pattern": "",
 					"name": "worklist",
 					"target": "worklist"
 				},
 				{
-					"pattern": "Objects/{objectId}",
-					"name": "object",
-					"target": "object"
+					"pattern": "Order/{orderId}",
+					"name": "order",
+					"target": "order"
 				}
 			],
 
@@ -113,9 +113,9 @@
 					"viewId": "worklist",
 					"viewLevel": 1
 				},
-				"object": {
-					"viewName": "Object",
-					"viewId": "object",
+				"order": {
+					"viewName": "Order",
+					"viewId": "order",
 					"viewLevel": 2
 				},
 				"objectNotFound": {

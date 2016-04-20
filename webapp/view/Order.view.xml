@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="sap.ui.demo.worklist.controller.Object"
+	controllerName="sap.ui.demo.worklist.controller.Order"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:semantic="sap.m.semantic">
@@ -14,13 +14,7 @@
 
 		<semantic:content>
 			<ObjectHeader
-				id="objectHeader"
-				title="{Name}"
-				number="{
-							path: 'UnitNumber',
-							formatter: '.formatter.numberUnit'
-				}"
-				numberUnit="{UnitOfMeasure}">
+				title="{OrderID} ordered by {CustomerID} - Contact Person: {path: '/Customers/ContactName', expand: 'Customers'}">
 			</ObjectHeader>
  		</semantic:content>
 

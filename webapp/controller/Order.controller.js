@@ -7,7 +7,7 @@ sap.ui.define([
 	], function (BaseController, JSONModel, History, formatter) {
 		"use strict";
 
-		return BaseController.extend("sap.ui.demo.worklist.controller.Object", {
+		return BaseController.extend("sap.ui.demo.worklist.controller.Order", {
 
 			formatter: formatter,
 
@@ -29,7 +29,7 @@ sap.ui.define([
 						delay : 0
 					});
 
-				this.getRouter().getRoute("object").attachPatternMatched(this._onObjectMatched, this);
+				this.getRouter().getRoute("order").attachPatternMatched(this._onObjectMatched, this);
 				// Store original busy indicator delay, so it can be restored later on
 				iOriginalBusyDelay = this.getView().getBusyIndicatorDelay();
 				this.setModel(oViewModel, "objectView");
@@ -76,10 +76,10 @@ sap.ui.define([
 			 * @private
 			 */
 			_onObjectMatched : function (oEvent) {
-				var sObjectId =  oEvent.getParameter("arguments").objectId;
+				var sOrderId =  oEvent.getParameter("arguments").orderId;
 				this.getModel().metadataLoaded().then( function() {
-					var sObjectPath = this.getModel().createKey("Objects", {
-						ObjectID :  sObjectId
+					var sObjectPath = this.getModel().createKey("Orders", {
+						OrderID :  sOrderId
 					});
 					this._bindView("/" + sObjectPath);
 				}.bind(this));

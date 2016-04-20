@@ -146,8 +146,8 @@ sap.ui.define([
 			 * @private
 			 */
 			_showObject : function (oItem) {
-				this.getRouter().navTo("object", {
-					objectId: oItem.getBindingContext().getProperty("ObjectID")
+				this.getRouter().navTo("order", {
+					orderId: oItem.getBindingContext().getProperty("OrderID")
 				});
 			},
 

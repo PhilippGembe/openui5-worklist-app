@@ -15,10 +15,10 @@
 				width="auto"
 				class="sapUiResponsiveMargin"
 				items="{
-					path: '/Order',
+					path: '[${name}==='Orders']',
 					sorter: {
-						path: 'Name',
-						descending: false
+						path: 'RequiredDate',
+						descending: true
 						}
 					}"
 				noDataText="{worklistView>/tableNoDataText}"
@@ -41,27 +41,80 @@
 				</headerToolbar>
 
 				<columns>
-					<Column id="nameColumn">
-						<Text text="{i18n>tableNameColumnTitle}" id="nameColumnTitle"/>
+					<Column>
+						<Text text="{i18n>tableOrderColumnTitle}"/>
 					</Column>
-					<Column id="unitNumberColumn" hAlign="End">
-						<Text text="{i18n>tableUnitNumberColumnTitle}" id="unitNumberColumnTitle"/>
+					<Column>
+						<Text text="{i18n>tableDateColumnTitle}"/>
+					</Column>
+					<Column>
+						<Text text="{i18n>tableShippingStatusColumnTitle}"/>
+					</Column>
+					<Column>
+						<Text text="Order Details"/>
 					</Column>
 				</columns>
 
 				<items>
-					<ColumnListItem
-						type="Navigation"
-						press="onPress">
-						<cells>
-							<ObjectIdentifier
-								title="{Name}"/>
-							<ObjectNumber
-								number="{
-									path: 'UnitNumber',
-									formatter: '.formatter.numberUnit'
-								}"
-								unit="{UnitOfMeasure}"/>
+				<ColumnListItem
+					type="Navigation"
+					press="onPress">
+					<cells>
+						<ObjectIdentifier
+							title="{OrderID}"
+							text="{CustomerID}" />
+
+						<ObjectIdentifier
+
+							text="{
+								path: 'RequiredDate',
+								type: 'sap.ui.model.type.DateTime',
+								formatOptions: {
+									style: 'short'
+								}
+							}" />
+							<ObjectStatus
+									text="{parts:[
+										{path: 'RequiredDate'},
+										{path: 'ShippedDate'}
+									],
+									formatter: '.formatter.shippingStatusText'}"
+									state="{parts:[
+										{path: 'RequiredDate'},
+										{path: 'ShippedDate'}
+									],
+									formatter: '.formatter.shippingStatusState'}" />
+							<Text text="{Order_Detail/ProductID}" />
+<!--
+<ObjectHeader
+	title="{OrderID}"
+	titleActive="true"
+	showMarkers="true"
+	fullScreenOptimized="true">
+	<statuses>
+		<ObjectStatus
+			title="Overall Status"
+			text="In Process"
+			state="None" />
+		<ObjectStatus
+				title="Picking"
+				text="Done"
+				state="Success" />
+		<ObjectStatus
+				title="Shipping"
+				text="Pending"
+				state="Warning" />
+	</statuses>
+	<attributes>
+		<ObjectAttribute
+			title="{i18n>objectShipNameTitle}"
+			text="{ShipName}"/>
+		<ObjectAttribute
+			text="{ShipPostalCode} {ShipCity}, {ShipCountry}"
+			tooltip="{ShipAddress}" />
+	</attributes>
+</ObjectHeader>
+-->
 						</cells>
 					</ColumnListItem>
 				</items>
