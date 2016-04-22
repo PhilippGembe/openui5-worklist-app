@@ -14,7 +14,7 @@
 
 		<semantic:content>
 			<ObjectHeader
-				title="{OrderID} ordered by {CustomerID} - Contact Person: {path: '/Customers/ContactName', expand: 'Customers'}">
+				title="{OrderID} ordered by {CustomerID} - Contact Person: {/Customer('ALFKI')/ContactName} - Address">
 			</ObjectHeader>
  		</semantic:content>
 
